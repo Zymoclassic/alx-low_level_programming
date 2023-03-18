@@ -2,18 +2,15 @@
 /**
  * main - entry point
  *
- * Return: alway 0
+ * Return: alway returns 0
  *
  */
 int main(void)
 {
-	int a = 122;
+	char a;
 
-	while (n >= 97)
-	{
-		putchar(n);
-		n--;
-	}
+	for (a = 'z'; a >= 'a' ; a--)
+		putchar(a);
 	putchar('\n');
 	return (0);
 }
