@@ -1,55 +1,79 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
+#include <type.h>
 #include "main.h"
+
 /**
- * main - minimum number of coin to make change
+ * coinConverter - help with the computation
  *
- * @argc: number of command line argument
+ * @x: passes variable to be compute to main
+ *
+ * Return: minimum coin required for the variable
+ */
+
+int coinConverter(int x)
+{
+	int count = 0;
+
+	while (x != 0)
+	{
+		if (x % 10 == 9 || x % 10 == 7)
+			x -= 2;
+		else if (x % 25 == 0)
+			x -= 25;
+		else if (x % 10 == 0)
+			x -= 10;
+		else if (x % 5 == 0)
+			x -= 5;
+		else if (x % 2 == 0)
+		{
+			if (x % 10 == 6)
+				x -= 1;
+			else
+				x-= 2;
+		}
+		else
+			x -= 1;
+
+		count++;
+	}
+
+	return (count);
+}
+
+/**
+ * main - accepts argument for minimum coin count
+ *
+ * @argc: number of command line arguments
  *
  * @argv: array of size argc
  *
  * Return: 0(success)
  */
+
 int main(int argc, char **argv)
 {
-	int coins = 0, sum = 0;
+	int x, coin;
 
-	x
-		if (argc != 2)
+	coin = 0;
+	
+	if (argc != 2)
 	{
 		printf("Error\n");
 		return (1);
 	}
 
-	sum = atoi(argv[1]);
+	x = atoi(argv[1]);
 
-	if (sum < 0)
-	{
+	if (x < 0)
 		printf("0\n");
+	else
+	{
+		coin = coinConverter(x);
+		
+		printf("%d\n", coin);
+	}
 
-		return (0);
-	}
-	while (sum / 25)
-	{
-		sum = sum - 25;
-		coins++;
-	}
-	while (sum / 10)
-	{
-		sum = sum - 10;
-		coins++;
-	}
-	while (sum / 5)
-	{
-		sum = sum - 5;
-		coins++;
-	}
-	while (sum / 2)
-	{
-		sum = sum - 2;
-		coins++;
-	}
-	coins = coins + sum
-		printf("%d\n", coins);
-		return (0);
+	return (0);
 }
