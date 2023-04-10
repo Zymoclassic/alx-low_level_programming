@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 	int coins = 0, sum = 0;
 
 	x
-		if (argc < 2)
+		if (argc != 2)
 	{
 		printf("Error\n");
 		return (1);
