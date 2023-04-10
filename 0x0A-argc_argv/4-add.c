@@ -14,29 +14,28 @@
 
 int main(int argc, char **argv)
 {
-	int d, add = 0, r = 0;
-	char y[] = "Error", *letter_detected;
+	int h, x;
+	int total = 0;
 
-	if (argc > 1)
+	if (argc < 1)
 	{
-		for (d = 1; d < argc; d++)
-		{
-			letter_detected = argv[d];
-			while (*letter_detected != 0)
-			{
-				if (*letter_detected < 47 || *letter_detected > 57)
-				{
-					printf("%s\n", y);
-					return (1);
-				}
-				letter_detected++;
-			}
-			r = atoi(argv[d]);
-			add = add + r;
-		}
-		printf("%d\n", add);
+		printf("0\n");
 	}
-	else
-		printf("%d\n", 0);
+
+	for (h = 1; h < argc; h++)
+	{
+		total = total + atoi(argv[h]);
+		for (x = 0; argv[h][x] != '\0'; x++)
+		{
+			if (!(isdigit(argv[h][x])))
+			{
+				printf("Error\n");
+
+				return (0);
+			}
+		}
+	}
+		printf("%d\n", total);
+
 		return (0);
 }
