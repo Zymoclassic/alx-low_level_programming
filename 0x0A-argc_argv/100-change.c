@@ -1,79 +1,38 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
-#include <type.h>
-#include "main.h"
-
 /**
- * coinConverter - help with the computation
- *
- * @x: passes variable to be compute to main
- *
- * Return: minimum coin required for the variable
+ *main - prints the minimum number of coins to make change for an amount.
+ *of money.
+ *@argc: number of command line arguments.
+ *@argv: array that contains the program command line arguments.
+ *Return: 0 - success.
  */
-
-int coinConverter(int x)
+int main(int argc, char *argv[])
 {
-	int count = 0;
+	int cents, ncoins = 0;
 
-	while (x != 0)
-	{
-		if (x % 10 == 9 || x % 10 == 7)
-			x -= 2;
-		else if (x % 25 == 0)
-			x -= 25;
-		else if (x % 10 == 0)
-			x -= 10;
-		else if (x % 5 == 0)
-			x -= 5;
-		else if (x % 2 == 0)
+		if (argc == 1 || argc > 2)
 		{
-			if (x % 10 == 6)
-				x -= 1;
-			else
-				x-= 2;
+			printf("Error\n");
+			return (1);
 		}
-		else
-			x -= 1;
 
-		count++;
-	}
+		cents = atoi(argv[1]);
 
-	return (count);
-}
-
-/**
- * main - accepts argument for minimum coin count
- *
- * @argc: number of command line arguments
- *
- * @argv: array of size argc
- *
- * Return: 0(success)
- */
-
-int main(int argc, char **argv)
-{
-	int x, coin;
-
-	coin = 0;
-	
-	if (argc != 2)
-	{
-		printf("Error\n");
-		return (1);
-	}
-
-	x = atoi(argv[1]);
-
-	if (x < 0)
-		printf("0\n");
-	else
-	{
-		coin = coinConverter(x);
-		
-		printf("%d\n", coin);
-	}
-
+		while (cents > 0)
+		{
+			if (cents >= 25)
+				cents -= 25;
+			else if (cents >= 10)
+				cents -= 10;
+			else if (cents >= 5)
+				cents -= 5;
+			else if (cents >= 2)
+				cents -= 2;
+			else if (cents >= 1)
+				cents -= 1;
+			ncoins += 1;
+		}
+	printf("%d\n", ncoins);
 	return (0);
 }
