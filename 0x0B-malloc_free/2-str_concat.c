@@ -1,43 +1,55 @@
 #include "main.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
- *str_concat - for concatenating two strings.
- *@s1: first string.
- *@s2: second string.
+ *str_concat - concatenates two strings.
  *
- *Return: pointer of an array of chars
+ *@s1: char pointer
+ *
+ *@s2: char pointer
+ *
+ *Return: strTemp
  */
+
 char *str_concat(char *s1, char *s2)
 {
-	char *strout;
-		unsigned int x, y, z, limit;
+	int counter1, counter2, x, y;
+	char *strTemp;
+
+	counter1 = 0;
+	counter2 = 0;
 
 		if (s1 == NULL)
-			s1 = "";
-		if (s2 == NULL)
-			s2 = "";
-
-		for (x = 0; s1[x] != '\0'; x++)
-			;
-
-		for (y = 0; s2[y] != '\0'; y++)
-			;
-
-		strout = malloc(sizeof(char) * (x + y + 1));
-
-		if (strout == NULL)
 		{
-			free(strout);
+			s1 = "";
+		}
+		if (s2 == NULL)
+		{
+			s2 = "";
+		}
+		while (s1[counter1] != '\0')
+		{
+			counter1++;
+		}
+		while (s2[counter2] != '\0')
+		{
+			counter2++;
+		}
+		counter2++;
+		strTemp = malloc(sizeof(char) * (counter1 + counter2));
+		if (strTemp == NULL)
+		{
 			return (NULL);
 		}
+		for (x = 0; x < counter1; x++)
+		{
+			strTemp[x] =  s1[x];
+		}
 
-		for (z = 0; z < i; z++)
-			strout[z] = s1[z];
-
-		limit = y;
-		for (y = 0; y <= limit; z++, y++)
-			strout[z] = s2[y];
-
-		return (strout);
+		for (y = 0; y < counter2; y++)
+		{
+			strTemp[x + y] = s2[y];
+		}
+		return (strTemp);
 }
