@@ -2,15 +2,16 @@
 #define DOG_H
 
 /**
- *struct dog - struct with dog info
- *@name: First entity
- *@age: Second entity
- *@owner: Third entity
+ *struct dog - struct for dog info
  *
- *Description: store different data types
+ *@name: type char
+ *@age: float type
+ *@owner: char type
+ *
+ *Description: structure to store dog info
  */
 
-typedef struct dog
+struct dog
 {
 	char *name;
 	float age;
