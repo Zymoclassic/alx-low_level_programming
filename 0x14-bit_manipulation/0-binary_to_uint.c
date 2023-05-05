@@ -1,37 +1,35 @@
 #include "main.h"
 
 /**
- * binary_to_uint - converts a binary number to an
- * unsigned int.
- * @b: binary.
+ * binary_to_uint - Converts binary to unsigned int
  *
- * Return: unsigned int.
+ * @b: Pointer to string of chars
+ *
+ * Return: Converted number
  */
+
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int ui;
-	int len, base_two;
+	signed int index = 0, num = 0;
+
 
 	if (!b)
 		return (0);
 
-	ui = 0;
-
-	for (len = 0; b[len] != '\0'; len++)
-		;
-
-	for (len--, base_two = 1; len >= 0; len--, base_two *= 2)
+	while (b[index] != '\0')
 	{
-		if (b[len] != '0' && b[len] != '1')
+		if (b[index] != '0' && b[index] != '1')
 		{
 			return (0);
 		}
 
-		if (b[len] & 1)
-		{
-			ui += base_two;
-		}
-	}
+		num <<= 1;
 
-	return (ui);
+		if (b[index] & 1)
+		{
+			num += 1;
+		}
+		index += 1;
+	}
+	return (num);
 }
